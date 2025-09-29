@@ -11,7 +11,13 @@ class AlunoController
     }
     public static function cadastrar()
     {
-        echo "Página de cadastro de alunos";
+        //echo "Página de cadastro de alunos";
+        $model = new Aluno();
+        $model->id = 6;
+        $model->nome = "Caleb";
+        $model->ra = "123456";
+        $model->curso = "Sistemas de Informação";
+        $model->save();
     }
 
     public static function listar()
