@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+use App\Model\Aluno;
+
 class AlunoController
 {
 
@@ -15,5 +17,7 @@ class AlunoController
     public static function listar()
     {
         echo "Listagem de alunos";
+        $aluno = new Aluno();
+        $aluno->getAll();
     }
 }
