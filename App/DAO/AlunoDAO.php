@@ -13,19 +13,19 @@ final class AlunoDAO extends DAO
 
     public function save(Aluno $model) : Aluno
     {
-        return ($model->id == null) ? $this->insert($model) : $this->update($model);
+        return ($model->Id == null) ? $this->insert($model) : $this->update($model);
     }
 
     public function insert(Aluno $model) : Aluno
     {
         $sql = "INSERT INTO aluno (nome, ra, curso) VALUES (?, ?, ?)";
         $stmt = parent::$conn->prepare($sql);
-        $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->ra);
-        $stmt->bindValue(3, $model->curso);
+        $stmt->bindValue(1, $model->Nome);
+        $stmt->bindValue(2, $model->RA);
+        $stmt->bindValue(3, $model->Curso);
         $stmt->execute();
 
-        $model->id = parent::$conn->lastInsertId();
+        $model->Id = parent::$conn->lastInsertId();
 
         return $model;
     }
@@ -36,10 +36,10 @@ final class AlunoDAO extends DAO
 
         $stmt = parent::$conn->prepare($sql);
 
-        $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->ra);
-        $stmt->bindValue(3, $model->curso);
-        $stmt->bindValue(4, $model->id);
+        $stmt->bindValue(1, $model->Nome);
+        $stmt->bindValue(2, $model->RA);
+        $stmt->bindValue(3, $model->Curso);
+        $stmt->bindValue(4, $model->Id);
         $stmt->execute();
 
         return $model();

@@ -14,9 +14,9 @@ final class AlunoController
         //echo "Página de cadastro de alunos";
         $model = new Aluno();
         //$model->id = 6;
-        $model->nome = "Caleb";
-        $model->ra = "123456";
-        $model->curso = "Sistemas de Informação";
+        $model->Nome = "Caleb";
+        $model->RA = "123456";
+        $model->Curso = "Sistemas de Informação";
         $model->save();
         echo "aluno inserido!";
     }

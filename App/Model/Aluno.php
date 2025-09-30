@@ -6,7 +6,7 @@ use App\DAO\AlunoDAO;
 
 final class Aluno
 {
-    public $id, $nome, $ra, $curso;
+    public $Id, $Nome, $RA, $Curso;
 
     public function save() : Aluno //return instance of Aluno
     {
