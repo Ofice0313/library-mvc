@@ -11,21 +11,45 @@ final class AlunoController
     }
     public static function cadastrar() : void
     {
-        //echo "Página de cadastro de alunos";
-        $model = new Aluno();
-        //$model->id = 6;
-        $model->Nome = "Caleb";
-        $model->RA = "123456";
-        $model->Curso = "Sistemas de Informação";
-        $model->save();
-        echo "aluno inserido!";
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $model = new Aluno();
+            $model->Id = !empty($_POST['id']) ? $_POST['id'] : null;
+            $model->Nome = $_POST['nome'];
+            $model->RA = $_POST['ra'];
+            $model->Curso = $_POST['curso'];
+            $model->save();
+
+            header('Location: /aluno');
+        }else
+        {
+            $model = new Aluno();
+            if(isset($_GET['id']))
+            {
+               $model = $model->getById( (int) $_GET['id'] ); 
+            } 
+             
+            include VIEWS . '/Aluno/form_aluno.php';
+        }
+
     }
 
     public static function listar() : void
     {
-        echo "Listagem de alunos";
+        //echo "Listagem de alunos";
         $aluno = new Aluno();
         $lista = $aluno->getAll();
-        var_dump($lista);
+        //var_dump($lista);
+        include VIEWS . '/Aluno/lista_aluno.php';
+    }
+
+    public static function delete() : void
+    {
+        $aluno = new Aluno();
+
+        $aluno->delete((int) $_GET['id']);
+
+        header("Location: /aluno");
     }
 }

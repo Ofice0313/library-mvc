@@ -42,7 +42,7 @@ final class AlunoDAO extends DAO
         $stmt->bindValue(4, $model->Id);
         $stmt->execute();
 
-        return $model();
+        return $model;
     }
 
     public function selectById(int $id) : ?Aluno
